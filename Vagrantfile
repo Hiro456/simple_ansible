@@ -1,6 +1,5 @@
 
 $nVM = 2
-$instance_name_prefix = "vmCentos"
 
 Vagrant.configure(2) do |config|
     config.vm.box = "centos/7"
@@ -16,7 +15,10 @@ Vagrant.configure(2) do |config|
         if vm_id == $nVM
           machine.vm.provision :ansible do |ansible|
             ansible.limit = "all"
-            ansible.playbook = "ansible/project_setup.yml"
+            #ansible.verbose = "v"
+            ansible.playbook = "ansible/defaults/project_setup.yml"
+            ansible.galaxy_role_file = "ansible/requirements.yml"
+            ansible.galaxy_command = "ansible-galaxy install --role-file=%{role_file}"
             ansible.groups = {
                 "docker_engine" => ["machine[1:2]"],
                 "docker_swarm_manager" => ["machine1"],

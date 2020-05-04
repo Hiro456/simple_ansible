@@ -4,9 +4,7 @@ Prerequisiti:
 - aver installato ansible
 - aver installato vagrant (e quindi anche virtual box) => 1.8 (https://www.vagrantup.com/docs/provisioning/ansible_intro.html)
     - vagrant plugin install vagrant-disksize
-- ansible-galaxy install suzuki-shunsuke.docker_ce_centos
-- ansible-galaxy install atosatto.docker-swarm https://galaxy.ansible.com/atosatto/docker-swarm
--pip install jmespath
+- pip install jmespath
 
 # TRIP
 - On local machine:
@@ -29,3 +27,4 @@ $ docker node ls
 
 # TODO
 - aggiungere sicurezza, attualmente tutto semplice
+- non rendere necessaria l'installazione manuale dei prerequisiti
