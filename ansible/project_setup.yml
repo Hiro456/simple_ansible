@@ -1,0 +1,45 @@
+- 
+  name: First test
+  hosts: all
+  gather_facts: yes
+  become: yes 
+  tasks:
+      - name: Create a new folder for the config for the extra config of the docker deamon
+        file:
+          path: /etc/systemd/system/docker.service.d
+          state: directory
+      - name: create a new empty file
+        copy:
+          content: ""
+          dest: /etc/systemd/system/docker.service.d/docker-external.conf
+          force: no
+          group: sys
+          owner: root
+          mode: 0555
+      - name: add configuration to expose Docker Daemon REST API
+        blockinfile:
+          path: /etc/systemd/system/docker.service.d/docker-external.conf
+          insertafter: '### Mod to expose REST API Daemon'
+          state: present
+          block: |
+              [Service]
+              ExecStart=
+              ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:4243 --containerd=/run/containerd/containerd.sock
+      - name: Restart daemon
+        systemd:
+          name: docker
+          state: restarted
+          daemon_reload: yes
+
+
+  roles:
+    - role: suzuki-shunsuke.docker_ce_centos
+      docker_centos_state: started
+      docker_centos_enabled: true
+      docker_centos_users:
+        - vagrant
+      become: true
+    - role: atosatto.docker-swarm
+      docker_swarm_interface: "eth1"
+      become: yes 
+        
