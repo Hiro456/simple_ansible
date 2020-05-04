@@ -11,14 +11,12 @@ Prerequisiti:
 - $ vagrant up
 - To re-run a playbook on an existing VM, just run:
 - $ vagrant provision
-- $ vagrant ssh machine1
-- on machine 1:
+- On machine 1 ( $ vagrant ssh machine1):
 - $ docker node ls
 - $ docker service create --replicas 2 alpine ping 8.8.8.8
 - $ docker service ls
-- vagrant ssh machine2
-- On machine 2:
 - $ docker node update --role manager machine2
+- On machine 2 ( $ vagrant ssh machine2):
 - $ docker node ls
 
 # Test REST API form local machine:
