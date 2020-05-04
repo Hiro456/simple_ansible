@@ -26,5 +26,4 @@ Prerequisiti:
 # TODO
 - aggiungere sicurezza, attualmente tutto semplice
 - aggiungere test
-- aggiungere integrazione con travis CI
 - completare documentazione
