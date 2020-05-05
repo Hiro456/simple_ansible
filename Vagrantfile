@@ -10,7 +10,6 @@ Vagrant.configure(2) do |config|
       config.vm.define "machine#{vm_id}" do |machine|
         machine.vm.hostname = "machine#{vm_id}"
         machine.vm.network "private_network", ip: "172.20.0.#{200+vm_id}"
-        machine.vm.network "public_network", bridge: 'bridge0', ip: "192.168.1.#{vm_id+200}"
 
         if vm_id == $nVM
           machine.vm.provision :ansible do |ansible|
