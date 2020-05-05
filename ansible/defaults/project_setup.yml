@@ -2,9 +2,7 @@
   hosts: all
   gather_facts: yes
   become: yes
-  tasks:
-    - name:
-      command: resize2fs /dev/sda1
+  tasks: 
     - name: Create a new folder for the config for the extra config of the docker deamon
       file:
         path: /etc/systemd/system/docker.service.d
