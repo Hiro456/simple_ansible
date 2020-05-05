@@ -2,7 +2,19 @@
   hosts: all
   gather_facts: yes
   become: yes
-  tasks: 
+  tasks:
+    - name: Install epel
+      yum:
+        name: epel-release
+        state: present
+    - name: install cloud-utils-growpart.x86_64
+      yum:
+        name: cloud-utils-growpart.x86_64
+        state: present
+    - name: growpart
+      command: "growpart /dev/sda 1"
+    - name: Update your root filesystem so that it becomes aware of the change
+      command: "xfs_growfs /dev/sda1"
     - name: Create a new folder for the config for the extra config of the docker deamon
       file:
         path: /etc/systemd/system/docker.service.d
