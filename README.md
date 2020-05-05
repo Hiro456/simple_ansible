@@ -19,9 +19,15 @@ Prerequisiti:
 - On machine 2 ( $ vagrant ssh machine2):
 - $ docker node ls
 
+# Deploy on docker swarm from local machine
+- docker -H 172.20.0.201:4243 node ls
+- docker -H 172.20.0.201:4243 service create --replicas 2 alpine ping 8.8.8.8
+- docker -H 172.20.0.201:4243 service ls
+
 # Test REST API form local machine:
 - curl http://172.20.0.201:4243/containers/json
 - crul http://172.20.0.202:4243/containers/json
+
 
 # TODO
 - aggiungere sicurezza, attualmente tutto semplice
