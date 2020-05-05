@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/francescogiopp/Projects/KIRATECH/Code_Challenge_Infrastructure_as_a_Code","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
