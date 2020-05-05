@@ -8,7 +8,7 @@ Prerequisiti:
 
 # TRIP
 - On local machine:
-- $ vagrant up
+```$ vagrant up```
 - To re-run a playbook on an existing VM, just run:
 - $ vagrant provision
 - On machine 1 ( $ vagrant ssh machine1):
