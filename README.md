@@ -9,7 +9,7 @@
 # TRIP
 - On local machine:
 
-``` $ vagrant up```
+```$ vagrant up```
 
 - To re-run a playbook on an existing VM, just run:
 
