@@ -1,8 +1,8 @@
 # Code_Challenge_Infrastructure_as_a_Code
 
 Prerequisiti:
-- aver installato ansible
-- aver installato vagrant (e quindi anche virtual box) => 1.8 (https://www.vagrantup.com/docs/provisioning/ansible_intro.html)
+- aver installato ansible (testato con ansible 2.9.7)
+- aver installato vagrant (testato con vagrant 2.2.7)
     - vagrant plugin install vagrant-disksize
 - pip install jmespath
 

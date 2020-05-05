@@ -3,6 +3,8 @@
   gather_facts: yes
   become: yes
   tasks:
+    - name:
+      command: resize2fs /dev/sda1
     - name: Create a new folder for the config for the extra config of the docker deamon
       file:
         path: /etc/systemd/system/docker.service.d
@@ -24,7 +26,7 @@
           [Service]
           ExecStart=
           ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:4243 --containerd=/run/containerd/containerd.sock
-    - name: Restart daemon
+    - name: Restart docker service
       systemd:
         name: docker
         state: restarted
