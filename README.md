@@ -1,32 +1,45 @@
 # Code_Challenge_Infrastructure_as_a_Code
 
-Prerequisiti:
-- aver installato ansible (testato con ansible 2.9.7)
-- aver installato vagrant (testato con vagrant 2.2.7)
-    - vagrant plugin install vagrant-disksize
+# Requirements:
+- ansible (tested with ansible 2.9.7)
+- vagrant (tested with vagrant 2.2.7)
+    - vagrant-disksize, run the following command ```vagrant plugin install vagrant-disksize```
 - pip install jmespath
 
 # TRIP
 - On local machine:
-- $ vagrant up
+
+``` $ vagrant up```
+
 - To re-run a playbook on an existing VM, just run:
-- $ vagrant provision
+
+``` $ vagrant provision ```
+
 - On machine 1 ( $ vagrant ssh machine1):
-- $ docker node ls
-- $ docker service create --replicas 2 alpine ping 8.8.8.8
-- $ docker service ls
-- $ docker node update --role manager machine2
+
+``` $ docker node ls ```
+
+``` $ docker service create --replicas 2 alpine ping 8.8.8.8```
+
+``` $ docker service ls ```
+
+``` $ docker node update --role manager machine2 ```
+
 - On machine 2 ( $ vagrant ssh machine2):
-- $ docker node ls
+
+``` $ docker node ls ```
 
 # Deploy on docker swarm from local machine
-- docker -H 172.20.0.201:4243 node ls
-- docker -H 172.20.0.201:4243 service create --replicas 2 alpine ping 8.8.8.8
-- docker -H 172.20.0.201:4243 service ls
+```docker -H 172.20.0.201:4243 node ls```
+
+```docker -H 172.20.0.201:4243 service create --replicas 2 alpine ping 8.8.8.8```
+
+```docker -H 172.20.0.201:4243 service ls```
 
 # Test REST API form local machine:
-- curl http://172.20.0.201:4243/containers/json
-- crul http://172.20.0.202:4243/containers/json
+``` curl http://172.20.0.201:4243/containers/json ```
+
+``` crul http://172.20.0.202:4243/containers/json ```
 
 
 # TODO

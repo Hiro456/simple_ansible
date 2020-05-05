@@ -11,10 +11,17 @@
       yum:
         name: cloud-utils-growpart.x86_64
         state: present
-    - name: growpart
-      command: "growpart /dev/sda 1"
-    - name: Update your root filesystem so that it becomes aware of the change
-      command: "xfs_growfs /dev/sda1"
+    - block:
+      - name: growpart
+        command: "growpart /dev/sda 1"
+      # - name: test
+      #   filesystem:
+      #     fstype: xfs
+      #     dev: /dev/sda1
+      #     resizefs: yes
+      - name: Update your root filesystem so that it becomes aware of the change, only when disk has not arleady resized
+        command: "xfs_growfs /dev/sda1"
+      ignore_errors: yes
     - name: Create a new folder for the config for the extra config of the docker deamon
       file:
         path: /etc/systemd/system/docker.service.d
@@ -35,7 +42,7 @@
         block: |
           [Service]
           ExecStart=
-          ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:4243 --containerd=/run/containerd/containerd.sock
+          ExecStart=/usr/bin/dockerd -H fd:// -H tcp://{{ ansible_eth1.ipv4.address }}:4243 --containerd=/run/containerd/containerd.sock
     - name: Restart docker service
       systemd:
         name: docker
