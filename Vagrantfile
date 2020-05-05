@@ -10,6 +10,9 @@ Vagrant.configure(2) do |config|
       config.vm.define "machine#{vm_id}" do |machine|
         machine.vm.hostname = "machine#{vm_id}"
         machine.vm.network "private_network", ip: "172.20.0.#{200+vm_id}"
+        machine.vm.provider "virtualbox" do |v|
+          v.name = "machine#{vm_id}"
+        end
 
         if vm_id == $nVM
           machine.vm.provision :ansible do |ansible|

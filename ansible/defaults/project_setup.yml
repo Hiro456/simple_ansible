@@ -14,11 +14,6 @@
     - block:
       - name: growpart
         command: "growpart /dev/sda 1"
-      # - name: test
-      #   filesystem:
-      #     fstype: xfs
-      #     dev: /dev/sda1
-      #     resizefs: yes
       - name: Update your root filesystem so that it becomes aware of the change, only when disk has not arleady resized
         command: "xfs_growfs /dev/sda1"
       ignore_errors: yes

@@ -4,7 +4,8 @@
 - ansible (tested with ansible 2.9.7)
 - vagrant (tested with vagrant 2.2.7)
     - vagrant-disksize, run the following command ```vagrant plugin install vagrant-disksize```
-- pip install jmespath
+- python
+    - pip install jmespath
 
 # TRIP
 - On local machine:
@@ -43,6 +44,6 @@
 
 
 # TODO
-- aggiungere sicurezza, attualmente tutto semplice
-- aggiungere test
-- completare documentazione
+- improve security
+- add tests
+- improve documentation
