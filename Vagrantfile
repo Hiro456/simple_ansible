@@ -19,8 +19,6 @@ Vagrant.configure(2) do |config|
             ansible.limit = "all"
             #ansible.verbose = "v"
             ansible.playbook = "ansible/defaults/project_setup.yml"
-            ansible.galaxy_role_file = "ansible/requirements.yml"
-            ansible.galaxy_command = "ansible-galaxy install --role-file=%{role_file}"
             ansible.groups = {
                 "docker_engine" => ["machine[1:2]"],
                 "docker_swarm_manager" => ["machine1"],

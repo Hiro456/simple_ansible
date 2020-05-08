@@ -1,2 +1,2 @@
-- src: suzuki-shunsuke.docker_ce_centos
-- src: atosatto.docker-swarm
+#- src: suzuki-shunsuke.docker_ce_centos
+#- src: atosatto.docker-swarm
