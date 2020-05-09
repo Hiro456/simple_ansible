@@ -44,4 +44,4 @@ env:
 # Tests all the scenarios
 script:
   - ansible-lint ./ansible/
-  - ansible/roles/atosatto.docker-swarm/tox
+  - ./ansible/roles/atosatto.docker-swarm/tox
