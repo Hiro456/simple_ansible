@@ -9,7 +9,7 @@
       docker_centos_users:
         - vagrant
       become: true
-    - role: atosatto.docker-swarm
+    - role: ansible-dockerswarm
       docker_swarm_interface: "eth1"
       become: yes
     - role: docker-swarm-setup
