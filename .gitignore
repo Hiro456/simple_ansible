@@ -18,3 +18,13 @@ Thumbs.db
 *.log
 .vagrant
 .vagrant/*
+__pycache__/
+*.py[cod]
+*$py.class
+*.retry
+
+### Molecule ###
+.tox
+.cache
+.molecule
+.vagrant
