@@ -1,5 +1,4 @@
 ---
-
 - name: Provision a Docker Swarm cluster
   hosts: all
   roles:
