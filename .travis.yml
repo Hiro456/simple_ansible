@@ -40,4 +40,4 @@ script:
   - cd ansible/roles/ansible-docker-ce-centos/tests
   - sudo vagrant up --provider=libvirt
   - cd ../../ansible-dockerswarm
-  - tox
+  - sudo -E env PATH=$PATH tox
