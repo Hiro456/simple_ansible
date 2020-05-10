@@ -9,7 +9,7 @@ sudo: required
 # Cache the big Vagrant boxes
 cache:
   directories:
-  - /home/travis/.vagrant.d/boxes
+    - /home/travis/.vagrant.d/boxes
 
 # Enable the docker service
 services:
@@ -26,6 +26,7 @@ before_install:
 install:
   - sudo apt-add-repository -y ppa:ansible/ansible
   - sudo apt install ansible
+  - sudo apt install ansible-lint
   - pip install tox-travis
   - sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu qemu-kvm qemu-utils ruby-dev
   # Download Vagrant & Install Vagrant package
