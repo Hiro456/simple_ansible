@@ -34,11 +34,6 @@ install:
   - vagrant --version
   - sudo vagrant plugin install vagrant-libvirt
 
-
-# Parallel testing of the supported Ansible versions
-env:
-    - ANSIBLE=2.9
-
 # Tests all the scenarios
 script:
   - ansible-lint ./ansible/
