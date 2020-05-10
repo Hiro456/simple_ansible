@@ -16,7 +16,6 @@ before_install:
   - sudo sed -i 's|DOCKER_OPTS=.*|DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock --storage-driver vfs"|g' /etc/default/docker
   - sudo service docker restart
   - docker info
-  - sudo rm -r /home/travis/build/Hiro456/Code_Challenge_Infrastructure_as_a_Code/ansible/roles/ansible-dockerswarm/.tox
 
 # Install molecule and docker-py
 install:
