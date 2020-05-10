@@ -1,5 +1,3 @@
-# Code_Challenge_Infrastructure_as_a_Code
-
 # Requirements:
 - ansible (tested with ansible 2.9.7)
 - vagrant (tested with vagrant 2.2.7)
