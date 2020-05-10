@@ -6,6 +6,11 @@ python:
 
 sudo: required
 
+# Cache the big Vagrant boxes
+cache:
+  directories:
+  - /home/travis/.vagrant.d/boxes
+
 # Enable the docker service
 services:
   - docker
@@ -20,6 +25,13 @@ before_install:
 # Install molecule and docker-py
 install:
   - pip install tox-travis
+  - sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+  # Download Vagrant & Install Vagrant package
+  - sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.deb
+  - sudo dpkg -i vagrant_2.2.7_x86_64.deb
+  - vagrant --version
+  - sudo vagrant plugin install vagrant-libvirt
+
 
 # Parallel testing of the supported Ansible versions
 env:
@@ -27,5 +39,8 @@ env:
 
 # Tests all the scenarios
 script:
-  - cd ansible/roles/ansible-dockerswarm
+  - ansible-lint ./ansible/
+  - cd ansible/roles/ansible-docker-ce-centos/tests
+  - sudo vagrant up --provider=libvirt
+  - cd ../../ansible-dockerswarm
   - tox

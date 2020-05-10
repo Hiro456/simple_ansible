@@ -3,7 +3,7 @@
   gather_facts: yes
   become: yes
   roles:
-    - role: suzuki-shunsuke.docker_ce_centos
+    - role: ansible-docker-ce-centos
       docker_centos_state: started
       docker_centos_enabled: true
       docker_centos_users:
