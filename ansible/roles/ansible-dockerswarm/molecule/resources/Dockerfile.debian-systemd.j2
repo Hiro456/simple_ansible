@@ -20,7 +20,6 @@ RUN systemctl set-default multi-user.target
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-# CMD ["/sbin/init"]
-RUN ["chmod","+x","/usr/sbin/init"]
+CMD ["/sbin/init"]
 
 RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get upgrade -y && apt-get install -y python sudo bash net-tools iproute2 ca-certificates && apt-get clean; fi

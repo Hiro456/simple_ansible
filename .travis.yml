@@ -2,7 +2,6 @@
 
 language: python
 python:
-  #- "2.7"
   - "3.6"
 
 sudo: required
@@ -21,25 +20,12 @@ before_install:
 # Install molecule and docker-py
 install:
   - pip install tox-travis
-    # Install ansible
-  - pip install ansible
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
-
-  - pip install ansible-lint
-  - ansible-lint --version
-
 
 # Parallel testing of the supported Ansible versions
 env:
-  matrix:
     - ANSIBLE=2.9
 
 # Tests all the scenarios
 script:
-  - ansible-lint ./ansible/
-  - cd ansible/roles/ansible-dockerswarm/ && tox
+  - cd ansible/roles/ansible-dockerswarm
+  - tox
